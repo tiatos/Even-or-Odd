@@ -1,0 +1,59 @@
+from random import randint
+from time import sleep
+print("="*25)
+print("Welcome to EVEN-OR-ODD")
+print("="*25)
+scoreplayer=0
+scorecomp=0
+stay = True
+choice = ""
+loop = True
+number_player = -1
+
+while stay:
+    while loop:
+        choice = str(input("What´s your choice?\nEven\n-OR-\nODD\n")).lower()
+        if choice != "even" and choice != "odd":
+            print("Try Again")
+        else:
+            loop = False
+
+    number_comp = randint(0,10)
+    loop = True
+
+    while loop:
+        number_player = int(input("Choose a number from 0 to 10:\n"))
+        if number_player>10 or number_player<0:
+            print("Try again")
+        else:
+            loop = False
+    loop = True
+
+    number_total = number_comp + number_player
+    print("Thinking.............")
+    sleep(1.5)
+    print(f"My number will be {number_comp}")
+    sleep(1.5)
+    print(f"Total number:{number_total}")
+    sleep(1.5)
+    if (number_total % 2 == 0 and choice=="even")or(number_total%2!=0 and choice=="odd"):
+        print("You Won! Let´s play again?")
+        scoreplayer += 1
+    else:
+        print("You Lost!Let´s go again!")
+        scorecomp += 1
+
+    print("=" * 25)
+    print(f"Computer: {scorecomp} X Player: {scoreplayer}")
+    print("=" * 25)
+    cont = int(input("Another round? \n1-Yes \n0-No\n"))
+    match cont:
+        case 1:
+            print("Then let´s go again!!!")
+        case 0:
+            print("Thanks for playing!")
+            stay = False
+            break
+        case _:
+            print("Try again")
+print(f"Pontuação final: Computer: {scorecomp} X Player {scoreplayer}")
